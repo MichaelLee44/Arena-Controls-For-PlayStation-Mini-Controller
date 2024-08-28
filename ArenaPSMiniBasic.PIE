@@ -1,0 +1,52 @@
+﻿/*Arena Controls on Playstation Mini controller
+ by MrDefMan
+*/
+
+//movement
+keyboard.Up = joystick.Button1   //move forward
+keyboard.Down = joystick.Button3 //move backwards
+keyboard.Left = joystick.Button4 //move left
+keyboard.Right = joystick.Button2 //move right
+keyboard.shift + keyboard.j = joystick.Button9 //jump
+
+
+//actions
+keyboard.c = joystick.Button7 //cast spell
+keyboard.a = joystick.Button8 //sheath/unsheath weapon
+mouse.LeftButton = joystick.Button5 //select/interact
+mouse.RightButton = joystick.button6 //select/inspect/pilfer/attack
+
+
+//mouse controls
+if pressed(keyboard.a) && var.weapondrawn == false && var.paused == false{
+  var.weapondrawn = True //player has weapon drawn
+} else if pressed(keyboard.a) && var.weapondrawn == true && var.paused == false{
+  var.weapondrawn = false //player does not have weapon drawn
+}
+
+if pressed(keyboard.Escape) && var.paused == false {
+  var.paused = true //pause menu not open
+} else if pressed(keyboard.Escape) && var.paused == true{
+  var.paused = false //pause menu open
+}
+
+//mouse will speed up only when weapon is drawn and game not paused
+if var.weapondrawn == false || var.paused == true {
+  var.cursorspeed = 10 //slower for precise menu selection
+} else if var.weapondrawn == true && var.paused == false {
+  var.cursorspeed = 20 //faster for attack
+}
+
+//x-axis motion
+if joystick.x == 1 {
+mouse.DirectInputX+=var.cursorspeed
+} else if joystick.x == -1{
+mouse.DirectInputX-=var.cursorspeed
+}
+
+//y-axis motion
+if joystick.y == 1 {
+   mouse.DirectInputY+=var.cursorspeed
+} else if joystick.y == -1 {
+   mouse.DirectInputY-=var.cursorspeed
+}

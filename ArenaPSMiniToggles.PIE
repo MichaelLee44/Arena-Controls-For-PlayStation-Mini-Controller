@@ -1,0 +1,71 @@
+﻿/*Joystick For Arena
+ by MrDefMan
+*/
+
+//toggle controls from action controls to UI controls
+if pressed(joystick.Button9){
+  if var.buttontoggle == true {
+     var.buttontoggle = false
+  } else if var.buttontoggle == false{
+     var.buttontoggle = true
+  }
+}
+
+
+//determine mouse speed
+if pressed(keyboard.a) && var.weapondrawn == false && var.paused == false {
+  var.weapondrawn = True //player has weapon drawn
+} else if pressed(keyboard.a) && var.weapondrawn == true && var.paused == false{
+  var.weapondrawn = false //player does not have weapon drawn
+}
+
+if pressed(keyboard.Escape) && var.paused == false && var.buttontoggle == false {
+  var.paused = true //pause menu not open
+} else if pressed(keyboard.Escape) && var.paused == true && var.buttontoggle == false {
+  var.paused = false //pause menu open
+}
+
+//mouse will speed up only when weapon is drawn and game not paused
+if var.weapondrawn == false || var.paused == true {
+  var.cursorspeed = 10 //slower for precise menu selection
+} else if var.weapondrawn == true && var.paused == false {
+  var.cursorspeed = 20 //faster for attack
+}
+
+
+//control modes
+if var.buttontoggle = true {  //UI based controls
+   keyboard.m = joystick.Button3 //local map
+   keyboard.Shift + keyboard.m = joystick.Button1 //world map
+   keyboard.CrSel + keyboard.F1 = joystick.Button2 //inventory/character sheet
+   keyboard.r = joystick.Button4 //rest
+   keyboard.l = joystick.Button7 //logbook
+   keyboard.s = joystick.Button8 //status
+   keyboard.p = joystick.Button5 //pilfer
+   keyboard.u = joystick.button6 //use potion/item
+   keyboard.Escape = Joystick.Button10 //pause/exit
+} else if var.buttontoggle = false {   //motion/action controls
+   keyboard.Up = joystick.Button1   //move forward
+   keyboard.Down = joystick.Button3 //move backwards
+   keyboard.Left = joystick.Button4 //move left
+   keyboard.Right = joystick.Button2 //move right
+   keyboard.c = joystick.Button7 //cast spell
+   keyboard.a = joystick.Button8 //sheath/unsheath weapon
+   mouse.LeftButton = joystick.Button5 //left click
+   mouse.RightButton = joystick.button6 //right click
+   keyboard.Shift + keyboard.j = joystick.Button10 //jump forward
+}
+
+//x-axis motion
+if joystick.x == 1 {
+mouse.DirectInputX+=var.cursorspeed
+} else if joystick.x == -1{
+mouse.DirectInputX-=var.cursorspeed
+}
+
+//y-axis motion
+if joystick.y == 1 {
+   mouse.DirectInputY+=var.cursorspeed
+} else if joystick.y == -1 {
+   mouse.DirectInputY-=var.cursorspeed
+}
