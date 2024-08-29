@@ -14,13 +14,16 @@ Cast - L1
 Sheath/Draw Weapon - R1
 Pause/Exit - Start
 Jump Forward - Select
+debug mouse speed (do this if your weapon is drawn but your mouse is moving too slow or vice versa) - L2 + R2
 
 
 
 Controls [toggle controls Version]
 
+Universal-
 Mouse - Dpad
 Toggle Mode for Other Buttons - Select
+debug mouse speed (do this if your weapon is drawn but your mouse is moving too slow or vice versa) - L2 + R2
 
 Mode 1-
 Forward - Triange

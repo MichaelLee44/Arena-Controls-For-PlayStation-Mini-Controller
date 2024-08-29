@@ -2,13 +2,26 @@
  by MrDefMan
 */
 
-//toggle controls from action controls to UI controls
+
+//toggle controls from action controlls to UI controlls
 if pressed(joystick.Button9){
   if var.buttontoggle == true {
      var.buttontoggle = false
+     //say "action mode"
   } else if var.buttontoggle == false{
      var.buttontoggle = true
+     //say "menu mode"
   }
+}
+
+
+//debug mousespeed
+if pressed (mouse.LeftButton + mouse.RightButton) || pressed(keyboard.p + keyboard.u) {
+ if var.weapondrawn == true {
+   var.weapondrawn = false
+ } else if var.weapondrawn == false {
+   var.weapondrawn = true
+ }
 }
 
 
@@ -43,7 +56,7 @@ if var.buttontoggle = true {  //UI based controls
    keyboard.s = joystick.Button8 //status
    keyboard.p = joystick.Button5 //pilfer
    keyboard.u = joystick.button6 //use potion/item
-   keyboard.Escape = Joystick.Button10 //pause/exit
+   keyboard.Escape = joystick.Button10 //Jump Forward
 } else if var.buttontoggle = false {   //motion/action controls
    keyboard.Up = joystick.Button1   //move forward
    keyboard.Down = joystick.Button3 //move backwards
@@ -53,8 +66,9 @@ if var.buttontoggle = true {  //UI based controls
    keyboard.a = joystick.Button8 //sheath/unsheath weapon
    mouse.LeftButton = joystick.Button5 //left click
    mouse.RightButton = joystick.button6 //right click
-   keyboard.Shift + keyboard.j = joystick.Button10 //jump forward
+   keyboard.Shift + Keyboard.j = joystick.Button10
 }
+
 
 //x-axis motion
 if joystick.x == 1 {

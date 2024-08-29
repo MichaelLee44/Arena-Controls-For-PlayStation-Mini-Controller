@@ -15,6 +15,7 @@ keyboard.c = joystick.Button7 //cast spell
 keyboard.a = joystick.Button8 //sheath/unsheath weapon
 mouse.LeftButton = joystick.Button5 //select/interact
 mouse.RightButton = joystick.button6 //select/inspect/pilfer/attack
+keyboard.Escape = joystick.Button10 // pause
 
 
 //mouse controls
@@ -36,6 +37,17 @@ if var.weapondrawn == false || var.paused == true {
 } else if var.weapondrawn == true && var.paused == false {
   var.cursorspeed = 20 //faster for attack
 }
+
+
+//debug mousespeed
+if pressed (mouse.LeftButton + mouse.RightButton) {
+ if var.weapondrawn == true {
+   var.weapondrawn = false
+ } else if var.weapondrawn == false {
+   var.weapondrawn = true
+ }
+}
+
 
 //x-axis motion
 if joystick.x == 1 {
